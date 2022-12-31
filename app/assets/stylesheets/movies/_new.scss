@@ -1,0 +1,95 @@
+.outside-square {
+    
+    position: fixed;
+    top: 21%;
+    left: 25%;
+    width: 700px;
+    box-shadow: 5px 5px 18px $gray;
+
+    div {
+        img {
+            max-width: 241px;
+            width: 241px;
+            min-width: 241px;
+        
+            max-height: 329px;
+            height: 329px;
+            min-height: 329px;
+        }
+    }
+
+    .form_frame {
+        position: relative;
+
+        form {
+            margin: 5px 12px;
+        }        
+        
+        .search_list_hidden {
+            display: none;
+        }
+        
+        .search_list_shown {
+            display: block;
+            position: absolute;
+            top: 71px;
+            z-index: 1;
+            background-color: white;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 431px;
+            height: 100px;
+        }
+
+    }
+
+    div form div div div label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input {
+        width: 431px;
+    }
+
+    select {
+        width: 431px;
+    }
+}
+
+
+
+@media (max-width: 1200px){
+    .outside-square {
+        left: 20%;
+    }
+}
+
+@media (max-width: 1100px){
+    .outside-square {
+        left: 17%;
+    }
+}
+
+@media (max-width: 1000px){
+    .outside-square {
+        left: 13%;
+    }
+}
+
+@media (max-width: 900px){
+    .outside-square {
+        left: 10%;
+    }
+}
+
+@media (max-width: 800px){
+    .outside-square {
+        left: 6%;
+    }
+}
+
+@media (max-width: 576px){
+    .outside-square {
+        left: 3%;
+    }
+}

@@ -1,0 +1,9 @@
+/*.form-control:disabled{
+  background-color: $color-lightgrey-rfb;
+}*/
+
+.activated-form-control {
+  border-color: $green;
+  border-width: 2px;
+  //background-color: $lighter-green;
+}

@@ -1,0 +1,18 @@
+.footer {
+    background-color: $blue;
+    color: #fff;
+    margin-top: 20px;
+    padding: 0 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    height: inherit;
+    bottom: 0;
+    position: fixed;
+    height: 33px;
+}
+
+.footer p {
+    margin: 0;
+    padding: 5px;
+}

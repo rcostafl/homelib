@@ -1,0 +1,30 @@
+.basic-card {
+  display: flex;  
+  margin: 20px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  width: 272px; 
+  max-width: 272px;
+  min-width: 272px;
+  height: 184px;
+  min-height: 184px;
+  max-height: 184px;
+
+  img {
+    min-width: 136px; 
+    max-width: 136px; 
+    width: 136px; 
+    max-height: 184px;
+    min-height: 184px;
+    height: 184px;
+  }
+
+  .card_title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .card_text {
+    text-align: left;
+  }
+}
