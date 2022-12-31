@@ -1,5 +1,5 @@
 <div class="cabecalho">
-  <nav class="navbar navbar-default mx-4" role="navigation">
+  <nav class="navbar" role="navigation">
     <% if current_user.nil? %>
       <div class="navbar-header navbar-brand">
         <%= link_to "#" do %>
@@ -13,20 +13,20 @@
         <%= link_to "Acesso restrito", user_session_path, class: 'servidor-nome-acesso-restrito'%>
       </div>
     <% else %>
-      <div class="navbar-header navbar-brand">
+      <div class="navbar-brand">
         <%= link_to "#" do %>
           <i class="fa-solid fa-film" style="color: white"></i>
           <span class="sistema-descricao sistema-nome hidden-xs hidden-sm">Collections</span>
         <% end %>
       </div>
-      <%= form_with url: search_movies_path, method: :get, class: "form-inline my-2 my-lg-0" do |form| %> 
+      <%= form_with url: search_movies_path, method: :get, class: "form-inline" do |form| %> 
 
         
         <% # if the search is activated, the action will be "search" and the related text field will have a different css class %>
         <% if params[:controller].eql?("movies") and params[:action].eql?("search") %>
-          <%= form.text_field :search, class: "form-control mr-sm-2 activated-form-control", type: "search", placeholder:"Search: Filtro Ativo" %>
+          <%= form.text_field :search, class: "form-control activated-form-control", type: "search", placeholder:"Search: Filtro Ativo" %>
         <% else%>
-          <%= form.text_field :search, class: "form-control mr-sm-2", type: "search", placeholder:"Search" %>
+          <%= form.text_field :search, class: "form-control", type: "search", placeholder:"Search" %>
         <%end%>
 
         <%= form.button class: "search-button" do%>
