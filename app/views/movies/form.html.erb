@@ -24,12 +24,13 @@ function enable_disable_edition(enableEditMode){
 }
 </script>
 
+
 <% if params['action'].eql?("new")%>
     <% disabled = false %>
 <% else %>
     <% disabled = true %>
 <%end %>
-<div style="position: relative">
+<div style="position: relative" id="movie_form_page">
     <div class="outside-square d-flex">
         <div>
             <% if !@movie.image_link.present? %>
@@ -38,10 +39,9 @@ function enable_disable_edition(enableEditMode){
                 <%= image_tag(@movie.image_link, :alt => @movie.title)%>
             <%end%>
         </div>
-        <div class="form_frame">
+        <div class="form_frame" data-controller="form">
 
             <%= simple_form_for(@movie) do |f| %>
-                
                 
                 <div class="row">
                     <div class="col-sm-5">
@@ -54,7 +54,7 @@ function enable_disable_edition(enableEditMode){
                     <div class="col-sm-5">
                         <%= f.association :director,
                             as: :select,
-                            label: 'Diretor.:',
+                            label: 'Diretor:',
                             input_html: {class: "form-control"},
                             disabled: disabled %>
                     </div>
