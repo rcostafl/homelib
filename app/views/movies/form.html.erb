@@ -39,13 +39,14 @@ function enable_disable_edition(enableEditMode){
                 <%= image_tag(@movie.image_link, :alt => @movie.title)%>
             <%end%>
         </div>
-        <div class="form_frame" data-controller="form">
+        
+        <div class="form_frame" data-controller="form"> <!-- In the connect method, there is a routine to exclude some css classes from the lables -->
 
             <%= simple_form_for(@movie) do |f| %>
                 
                 <div class="row">
                     <div class="col-sm-5">
-                        <%= f.input :title, label: 'Título:', autofocus: true, input_html:{class: "form-control"}, disabled: disabled %>
+                        <%= f.input :title, label: 'Título:', autofocus: true, input_html:{class: "form-control", data: { controller: 'form', action: 'input->form#showSearchList' }}, disabled: disabled %>
                         <ul id="search_list" class="search_list_shown">
                         </ul>
                     </div>

@@ -2,9 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="form"
 export default class extends Controller {
-  connect() {
-    removeMarginFromFromInputs()
+  
+  static targets = ["items", "form"]
+
+  connect(event) {
+    //removeMarginFromFromInputs()
+    //console.log(this.element)
+    //console.log(this.itemsTarget)
+    //console.log(this.formTarget)
+    console.log("entrei")
   }
+
+  showSearchList(event) {
+    alert('showSearchList')
+  }  
 }
 
 const removeMarginFromFromInputs = () => {
