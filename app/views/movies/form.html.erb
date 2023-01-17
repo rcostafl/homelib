@@ -40,14 +40,15 @@ function enable_disable_edition(enableEditMode){
             <%end%>
         </div>
         
-        <div class="form_frame" data-controller="form"> <!-- In the connect method, there is a routine to exclude some css classes from the lables -->
+        <div class="form_frame"> <!-- In the connect method, there is a routine to exclude some css classes from the lables -->
 
-            <%= simple_form_for(@movie) do |f| %>
+            <%= simple_form_for(@movie, data: {controller: "form", form_target: "formtag"}) do |f| %>
                 
                 <div class="row">
                     <div class="col-sm-5">
-                        <%= f.input :title, label: 'Título:', autofocus: true, input_html:{class: "form-control", data: { controller: 'form', action: 'input->form#showSearchList' }}, disabled: disabled %>
-                        <ul id="search_list" class="search_list_shown">
+                        <%= f.input :title, label: 'Título:', autofocus: true, input_html:{class: "form-control", data: { controller: 'form', form_target: "titletag",action: 'input->form#showSearchList' }}, disabled: disabled %>
+                        <ul id="search_list" class="search_list_shown" data-controller="form" data-form-target="searchList">
+
                         </ul>
                     </div>
                 </div>
