@@ -17,20 +17,44 @@ export default class extends Controller {
     
   }
 
-  showSearchList(event) {
+  hideSearchList(event){
+    
     const search_list_el = document.getElementById("search_list")
+    search_list.classList.remove("search_list_shown")
+    search_list.classList.add("search_list_hidden")
+    
+  }
 
-    fetch('http://www.omdbapi.com/?s=godfather&apikey=adf1f2d7')
-    .then(response => response.json())
-    .then((data) => {
-      data.Search.forEach((result) => {
-        console.log(result.Title)
-        let li_el = document.createElement("li")
-        li_el.innerHTML = result.Title
-        search_list_el.appendChild(li_el)
-        
-      })
-    })
+  showSearchList(event) {
+    
+    const search_list_el = document.getElementById("search_list")
+    const movie_title_input = event.srcElement
+
+    if (movie_title_input.value.length > 2){
+
+      search_list.classList.remove("search_list_hidden")
+      search_list.classList.add("search_list_shown")
+
+      // Search movie  
+      fetch('http://www.omdbapi.com/?s=godfather&apikey=adf1f2d7')
+      .then(response => response.json())
+      .then((data) => {
+        data.Search.forEach((movie) => {
+            
+            let li_el = document.createElement("li")
+            li_el.innerHTML = movie.Title
+            search_list_el.appendChild(li_el)
+            
+        })
+    
+      })      
+
+    }else{
+      search_list.classList.remove("search_list_shown")
+      search_list.classList.add("search_list_hidden")
+    }
+
+
   }  
 }
 
