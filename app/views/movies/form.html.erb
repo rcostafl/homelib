@@ -47,9 +47,9 @@ function enable_disable_edition(enableEditMode){
                 <div class="row">
                     <div class="col-sm-5">
                         <%= f.input :title, label: 'Título:', autofocus: true, input_html:{class: "form-control", data: { controller: 'form', form_target: "titletag",action: 'input->form#showSearchList' }}, disabled: disabled %>
-                        <ul id="search_list" class="search_list_hidden" data-controller="form" data-form-target="searchList">
+                        <select id="search_list" class="search_list_hidden" data-controller="form" data-form-target="searchList" size="5">
 
-                        </ul>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

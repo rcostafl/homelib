@@ -41,9 +41,10 @@ export default class extends Controller {
       .then((data) => {
         data.Search.forEach((movie) => {
             
-            let li_el = document.createElement("li")
-            li_el.innerHTML = movie.Title
-            search_list_el.appendChild(li_el)
+            let option_el = document.createElement("option")
+            option_el.innerHTML = movie.Title
+            option_el.setAttribute("value", movie.Title)
+            search_list_el.appendChild(option_el)
             
         })
     
