@@ -51,13 +51,26 @@ export default class extends Controller {
       })      
 
     }else{
-      search_list.classList.remove("search_list_shown")
-      search_list.classList.add("search_list_hidden")
+      hideSearchList()
     }
 
 
   }  
+
+
+  selectItem(event){
+
+    event.preventDefault()
+
+    const title_inp = document.getElementById("movie_title")
+    title_inp.value = event.srcElement.value
+
+    hideSearchList()
+
+  }
 }
+
+
 
 const removeMarginFromFromInputs = () => {
    
@@ -65,4 +78,10 @@ const removeMarginFromFromInputs = () => {
           element.parentElement.classList.remove("mb-3")
       })
   
+}
+
+const hideSearchList = () => {
+  const search_list = document.getElementById("search_list")
+  search_list.classList.remove("search_list_shown")
+  search_list.classList.add("search_list_hidden")
 }
