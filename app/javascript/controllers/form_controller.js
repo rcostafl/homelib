@@ -31,22 +31,25 @@ export default class extends Controller {
     const movie_title_input = event.srcElement
 
     if (movie_title_input.value.length > 2){
-
-      search_list.classList.remove("search_list_hidden")
-      search_list.classList.add("search_list_shown")
-
+      search_list_el.innerHTML = ""
       // Search movie  
-      fetch('http://www.omdbapi.com/?s=godfather&apikey=adf1f2d7')
+      fetch(`http://www.omdbapi.com/?s=${movie_title_input.value}&apikey=adf1f2d7`)
       .then(response => response.json())
       .then((data) => {
-        data.Search.forEach((movie) => {
-            
-            let option_el = document.createElement("option")
-            option_el.innerHTML = movie.Title
-            option_el.setAttribute("value", movie.Title)
-            search_list_el.appendChild(option_el)
-            
-        })
+
+        if(data.Response == 'True'){
+          search_list.classList.remove("search_list_hidden")
+          search_list.classList.add("search_list_shown")
+
+          data.Search.forEach((movie) => {
+              
+              let option_el = document.createElement("option")
+              option_el.innerHTML = movie.Title
+              option_el.setAttribute("value", movie.Title)
+              search_list_el.appendChild(option_el)
+              
+          })
+        }
     
       })      
 
@@ -57,6 +60,19 @@ export default class extends Controller {
 
   }  
 
+  goToSearchList(event){
+    //check if search list is visible
+    const search_list_el = document.getElementById("search_list")
+    
+    if (search_list_el.classList.contains("search_list_shown")){
+      event.preventDefault()
+      search_list_el.focus()
+
+      search_list_el.value = search_list_el.firstChild.text
+
+    }
+
+  }
 
   selectItem(event){
 
@@ -68,6 +84,7 @@ export default class extends Controller {
     hideSearchList()
 
   }
+
 }
 
 
