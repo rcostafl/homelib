@@ -32,12 +32,18 @@
         .search_list_shown {
             display: block;
             position: absolute;
+            overflow-y: scroll;
             top: 71px;
             z-index: 1;
             background-color: white;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             width: 431px;
             height: 100px;
+
+        }
+
+        .search_list_shown li {
+            list-style-type: none;
         }
 
     }
