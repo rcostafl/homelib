@@ -7,24 +7,30 @@ export default class extends Controller {
 
   connect(event) {
     removeMarginFromFromInputs()
-    //console.log(this.element)
-    //console.log(this.itemsTarget)
-    //console.log(this.formTarget)
-    //console.log("entrei")
-    //console.log(this.element.action)
-    //console.log(this.formtagTarget)
-    //console.log(this.titletagTarget)
+    //document.addEventListener("click", hideSearchOnClickOut)
     
+  }
+  
+  selectItem(event){
+    console.log("inside selectItem")
+
+    event.preventDefault()
+
+    const title_inp = document.getElementById("movie_title")
+    title_inp.value = event.srcElement.value
+
+    hideSearchList()
+
   }
 
   router(event){
     if(event.keyCode == 13){ // if enter pressed
-      selectItem(event)      //select item
+      console.log("selecting item")
+      this.selectItem(event)
     }else if (event.keyCode == 27){ // if esc pressed
       hideSearchList(event)         // hide search list
     }else if (event.keyCode == 9){ // if tab pressed
       hideSearchList(event)
-      
     }
   }
 
@@ -37,7 +43,9 @@ export default class extends Controller {
   }
 
   showSearchList(event) {
-    console.log(event)
+
+    // Adding to the document the listener wich function checks for a click outside the search_list and closes it.
+    document.addEventListener("click", hideSearchOnClickOut)
     
     const search_list_el = document.getElementById("search_list")
     const movie_title_input = event.srcElement
@@ -83,20 +91,7 @@ export default class extends Controller {
       search_list_el.value = search_list_el.firstChild.text
 
     }
-
   }
-
-  selectItem(event){
-
-    event.preventDefault()
-
-    const title_inp = document.getElementById("movie_title")
-    title_inp.value = event.srcElement.value
-
-    hideSearchList()
-
-  }
-
 }
 
 
@@ -111,6 +106,26 @@ const removeMarginFromFromInputs = () => {
 
 const hideSearchList = () => {
   const search_list = document.getElementById("search_list")
-  search_list.classList.remove("search_list_shown")
-  search_list.classList.add("search_list_hidden")
+  if(search_list.classList.contains("search_list_shown")){
+    search_list.classList.remove("search_list_shown")
+    search_list.classList.add("search_list_hidden")
+    
+    // Removing from the document the listener wich function checks for a click outside the search_list and closes it.
+    document.removeEventListener('click', hideSearchOnClickOut)
+  }
+}
+
+const hideSearchOnClickOut = (event) => {
+  // Testing if the click was out of the search_list
+  if (
+    event.target.parentElement == null ||
+    ( 
+        event.target.id               != "search_list"  &&
+        event.target.id               != "movie_title"  &&
+        event.target.parentElement.id != "search_list"
+    )
+  ){
+    // hiding search list
+    hideSearchList()
+  }
 }
