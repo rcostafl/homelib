@@ -45,9 +45,9 @@ class MoviesController < ApplicationController
 
     def search
         if params[:search].present?
-            @movies = Movie.joins(:shelf)
+            @movies = Movie.joins(:shelf).joins(:director)
                             .where("movies.title    ilike :search or\ 
-                                    movies.director ilike :search or\
+                                    directors.name  ilike :search or\
                                     shelves.name    ilike :search",
                                     search: "%#{params[:search]}%")
             @filter_activated = true
