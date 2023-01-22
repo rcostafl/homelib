@@ -17,6 +17,17 @@ export default class extends Controller {
     
   }
 
+  router(event){
+    if(event.keyCode == 13){ // if enter pressed
+      selectItem(event)      //select item
+    }else if (event.keyCode == 27){ // if esc pressed
+      hideSearchList(event)         // hide search list
+    }else if (event.keyCode == 9){ // if tab pressed
+      hideSearchList(event)
+      
+    }
+  }
+
   hideSearchList(event){
     
     const search_list_el = document.getElementById("search_list")
@@ -26,6 +37,7 @@ export default class extends Controller {
   }
 
   showSearchList(event) {
+    console.log(event)
     
     const search_list_el = document.getElementById("search_list")
     const movie_title_input = event.srcElement
